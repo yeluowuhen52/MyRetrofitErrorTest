@@ -45,13 +45,13 @@ final class MyGsonResponseBodyConverter<T> implements Converter<ResponseBody, T>
 
     private void verify(String json) {
         Result result = gson.fromJson(json, Result.class);
-        if (result.state != SUCCESS) {
-            int a = result.state;
-            switch (result.state) {
+        if (result.getState() != SUCCESS) {
+            int a = result.getState();
+            switch (result.getState()) {
                 case SERVER_EXCEPTION:
-                    throw new MyException(result.msg);
+                    throw new MyException(result.getMsg());
                 case TOKEN_EXPIRE:
-                    throw new MyException(result.msg);
+                    throw new MyException(result.getMsg());
                 default:
 //                    throw new MyException("不清楚什么原因！");
             }

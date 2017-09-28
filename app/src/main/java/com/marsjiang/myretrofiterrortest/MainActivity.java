@@ -37,6 +37,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<Result<UserReturnBean>> call, Response<Result<UserReturnBean>> response) {
                 if (response.isSuccessful()) {
+                    if (response.body().getData() == null) {
+
+                    }
                     Log.e("infoooo", "normalGet:" + response.body() + "");
                 }
             }
